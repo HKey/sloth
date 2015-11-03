@@ -10,7 +10,7 @@ clean-elc:
 clean: clean-elc
 
 compile: clean-elc
-	${CASK} exec ${EMACS} -Q -batch -L ./ -f batch-byte-compile \
+	${CASK} exec ${EMACS} -Q -batch -L ./ -L ./test -f batch-byte-compile \
 	./*.el \
 	./test/*.el
 
@@ -24,7 +24,7 @@ test-elc: compile
 # That is the reason why only Emacs 24.4 or newer versions are tested with
 # byte-compile-error-on-warn = t.
 test-compilation: clean-elc
-	${CASK} exec ${EMACS} -Q -batch -L ./ -eval \
+	${CASK} exec ${EMACS} -Q -batch -L ./ -L ./test -eval \
 	"(progn \
 	   (when (version<= \"24.4\" emacs-version) \
 	     (setq byte-compile-error-on-warn t)) \
