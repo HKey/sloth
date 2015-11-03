@@ -20,7 +20,7 @@ test-elc: compile
 test-compilation: clean-elc
 	${CASK} exec ${EMACS} -Q -batch -L ./ -eval \
 	"(progn \
-	   (when (version<= \"24.3\" emacs-version) \
+	   (when (version<= \"24.4\" emacs-version) \
 	     (setq byte-compile-error-on-warn t)) \
 	   (batch-byte-compile))" ./*.el
 
