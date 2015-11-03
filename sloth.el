@@ -3,6 +3,9 @@
 ;; Copyright (C) 2015  Hiroki YAMAKAWA
 
 ;; Author:  Hiroki YAMAKAWA <s06139@gmail.com>
+;; URL: https://github.com/HKey/sloth
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "24") (cl-lib "0.5"))
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
