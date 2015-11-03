@@ -19,10 +19,11 @@ before_install:
   - cask
 script:
   - emacs --version
-  - make test
+  - if [ $COVERAGE_TEST = "yes" ]; then make coverage; else make test; fi
 env:
   - EVM_EMACS=emacs-24.1-travis
   - EVM_EMACS=emacs-24.2-travis
   - EVM_EMACS=emacs-24.3-travis
   - EVM_EMACS=emacs-24.4-travis
   - EVM_EMACS=emacs-24.5-travis
+  - EVM_EMACS=emacs-24.5-travis COVERAGE_TEST=yes
