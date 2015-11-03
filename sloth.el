@@ -109,6 +109,28 @@ This cannot return control if LAZY-LIST is an infinite list."
     (let ((list lazy-list))
       (while (setq list (sloth-cdr list))))))
 
+
+
+;;;; Dash compatible functions
+
+;; These functions are based on dash.el (https://github.com/magnars/dash.el).
+
+;;; Maps
+
+(defun sloth-map (fn lazy-list)
+  "A lazy version of `-map'."
+  (when lazy-list
+    (sloth-cons (funcall fn (sloth-car lazy-list))
+                (sloth-map fn (sloth-cdr lazy-list)))))
+
+;;; Sublist selection
+
+(defun sloth-take (n lazy-list)
+  "A lazy version of `-take'."
+  (cl-loop for i from 0 below n
+           for e in lazy-list by #'sloth-cdr
+           collect e))
+
 
 (provide 'sloth)
 ;;; sloth.el ends here

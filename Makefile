@@ -16,9 +16,11 @@ compile: clean-elc
 
 test-el: clean-elc
 	${CASK} exec ert-runner ./test/sloth-test.el
+	${CASK} exec ert-runner ./test/sloth-test-dash.el
 
 test-elc: compile
 	${CASK} exec ert-runner ./test/sloth-test.elc
+	${CASK} exec ert-runner ./test/sloth-test-dash.elc
 
 # Ert on Emacs 24.3 or older makes many unused value warnings.
 # That is the reason why only Emacs 24.4 or newer versions are tested with
