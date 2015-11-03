@@ -30,6 +30,7 @@
 
 (require 'sloth)
 (require 'sloth-test)
+(require 'sloth-test-dash)
 
 (provide 'sloth-test-coverage)
 ;;; sloth-test-coverage.el ends here
