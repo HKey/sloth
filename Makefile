@@ -1,7 +1,7 @@
 EMACS ?= emacs
 CASK  ?= cask
 
-.PHONY: clean-elc clean compile test-el test-elc test-compilation test
+.PHONY: clean-elc clean compile test-el test-elc test-compilation test coverage
 
 clean-elc:
 	-rm ./*.elc
@@ -31,3 +31,6 @@ test-compilation: clean-elc
 	   (batch-byte-compile))" ./*.el ./test/*.el
 
 test: test-el test-elc test-compilation
+
+coverage: clean-elc
+	${CASK} exec ert-runner ./test/sloth-test-coverage.el
