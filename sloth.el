@@ -188,6 +188,16 @@ This cannot return control if LAZY-LIST is an infinite list."
 
 ;;; Sublist selection
 
+(defun sloth-filter (pred list)
+  "A lazy version of `-filter'."
+  (when list
+    (cl-loop for first = (sloth-car list)
+             for rest = (sloth-cdr list)
+             when (funcall pred first)
+             return (sloth-cons first (sloth-filter pred rest))
+             while rest
+             do (setq list rest))))
+
 (defun sloth-take (n list)
   "A lazy version of `-take'."
   (cl-loop for i from 0 below n

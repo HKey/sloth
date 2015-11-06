@@ -60,6 +60,7 @@
    sloth-mapcat
 
    ;; Sublist selection
+   sloth-filter
    sloth-take))
 
 (load (f-join sloth-test-dash-dir "dev" "examples-to-tests.el"))
