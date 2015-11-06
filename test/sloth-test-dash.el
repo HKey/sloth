@@ -57,6 +57,7 @@
    sloth-annotate
    sloth-splice
    sloth-splice-list
+   sloth-mapcat
 
    ;; Sublist selection
    sloth-take))

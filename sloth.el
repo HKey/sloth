@@ -182,6 +182,10 @@ This cannot return control if LAZY-LIST is an infinite list."
   "A lazy version of `-splice-list'."
   (sloth-splice pred (lambda (_) new-list) list))
 
+(defun sloth-mapcat (fn list)
+  "A lazy version of `-mapcat'."
+  (sloth-splice (lambda (_) t) fn list))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
