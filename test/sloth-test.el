@@ -111,5 +111,10 @@
   (should (equal (sloth-doall (sloth-list 1 2 3))
                  (list 1 2 3))))
 
+(ert-deftest sloth-append ()
+  (should (equal (sloth-doall (sloth-append (sloth-list 1 2 3)
+                                            (sloth-list 4 5 6)))
+                 '(1 2 3 4 5 6))))
+
 (provide 'sloth-test)
 ;;; sloth-test.el ends here

@@ -109,6 +109,16 @@ This cannot return control if LAZY-LIST is an infinite list."
     (let ((list lazy-list))
       (while (setq list (sloth-cdr list))))))
 
+(defun sloth-append (&rest lists)
+  "Make a concatenated lazy list from LISTS."
+  (when lists
+    (let ((first (car lists))
+          (rest (cdr lists)))
+      (if (null first)
+          (apply #'sloth-append rest)
+        (sloth-cons (sloth-car first)
+                    (apply #'sloth-append (cons (sloth-cdr first) rest)))))))
+
 
 
 ;;;; Dash compatible functions
