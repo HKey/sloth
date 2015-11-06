@@ -198,6 +198,10 @@ This cannot return control if LAZY-LIST is an infinite list."
              while rest
              do (setq list rest))))
 
+(defun sloth-remove (pred list)
+  "A lazy version of `-remove'."
+  (sloth-filter (lambda (x) (not (funcall pred x))) list))
+
 (defun sloth-take (n list)
   "A lazy version of `-take'."
   (cl-loop for i from 0 below n
