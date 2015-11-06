@@ -117,18 +117,18 @@ This cannot return control if LAZY-LIST is an infinite list."
 
 ;;; Maps
 
-(defun sloth-map (fn lazy-list)
+(defun sloth-map (fn list)
   "A lazy version of `-map'."
-  (when lazy-list
-    (sloth-cons (funcall fn (sloth-car lazy-list))
-                (sloth-map fn (sloth-cdr lazy-list)))))
+  (when list
+    (sloth-cons (funcall fn (sloth-car list))
+                (sloth-map fn (sloth-cdr list)))))
 
 ;;; Sublist selection
 
-(defun sloth-take (n lazy-list)
+(defun sloth-take (n list)
   "A lazy version of `-take'."
   (cl-loop for i from 0 below n
-           for e in lazy-list by #'sloth-cdr
+           for e in list by #'sloth-cdr
            collect e))
 
 
