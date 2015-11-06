@@ -144,6 +144,16 @@ This cannot return control if LAZY-LIST is an infinite list."
                       rest
                     (sloth-map-first pred rep rest))))))
 
+(defun sloth--map-indexed (fn list index)
+  "An internal function for `sloth-map-indexed'."
+  (when list
+    (sloth-cons (funcall fn index (sloth-car list))
+                (sloth--map-indexed fn (sloth-cdr list) (1+ index)))))
+
+(defun sloth-map-indexed (fn list)
+  "A lazy version of `-map-indexed.'"
+  (sloth--map-indexed fn list 0))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
