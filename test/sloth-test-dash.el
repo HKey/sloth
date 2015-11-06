@@ -52,6 +52,7 @@
    ;; Maps
    sloth-map
    sloth-map-when
+   sloth-map-first
 
    ;; Sublist selection
    sloth-take))

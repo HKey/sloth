@@ -131,6 +131,19 @@ This cannot return control if LAZY-LIST is an infinite list."
                  x))
              list))
 
+(defun sloth-map-first (pred rep list)
+  "A lazy version of `-map-first'."
+  (when list
+    (let* ((first (sloth-car list))
+           (rest (sloth-cdr list))
+           (matchedp (funcall pred first)))
+      (sloth-cons (if matchedp
+                      (funcall rep first)
+                    first)
+                  (if matchedp
+                      rest
+                    (sloth-map-first pred rep rest))))))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
