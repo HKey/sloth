@@ -123,6 +123,14 @@ This cannot return control if LAZY-LIST is an infinite list."
     (sloth-cons (funcall fn (sloth-car list))
                 (sloth-map fn (sloth-cdr list)))))
 
+(defun sloth-map-when (pred rep list)
+  "A lazy version of `-map-when'."
+  (sloth-map (lambda (x)
+               (if (funcall pred x)
+                   (funcall rep x)
+                 x))
+             list))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)

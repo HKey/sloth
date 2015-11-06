@@ -51,6 +51,7 @@
  '(
    ;; Maps
    sloth-map
+   sloth-map-when
 
    ;; Sublist selection
    sloth-take))
