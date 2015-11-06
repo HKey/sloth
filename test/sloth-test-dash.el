@@ -55,6 +55,7 @@
    sloth-map-first
    sloth-map-indexed
    sloth-annotate
+   sloth-splice
 
    ;; Sublist selection
    sloth-take))

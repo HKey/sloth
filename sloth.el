@@ -168,6 +168,16 @@ This cannot return control if LAZY-LIST is an infinite list."
   "A lazy version of `-annotate'."
   (sloth-map (lambda (x) (cons (funcall fn x) x)) list))
 
+(defun sloth-splice (pred fun list)
+  "A lazy version of `-splice'."
+  (when list
+    (let ((first (sloth-car list)))
+      (sloth-append
+       (if (funcall pred first)
+           (funcall fun first)
+         (list first))
+       (sloth-splice pred fun (sloth-cdr list))))))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
