@@ -154,6 +154,10 @@ This cannot return control if LAZY-LIST is an infinite list."
   "A lazy version of `-map-indexed.'"
   (sloth--map-indexed fn list 0))
 
+(defun sloth-annotate (fn list)
+  "A lazy version of `-annotate'."
+  (sloth-map (lambda (x) (cons (funcall fn x) x)) list))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
