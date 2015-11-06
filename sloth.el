@@ -178,6 +178,10 @@ This cannot return control if LAZY-LIST is an infinite list."
          (list first))
        (sloth-splice pred fun (sloth-cdr list))))))
 
+(defun sloth-splice-list (pred new-list list)
+  "A lazy version of `-splice-list'."
+  (sloth-splice pred (lambda (_) new-list) list))
+
 ;;; Sublist selection
 
 (defun sloth-take (n list)
