@@ -62,6 +62,7 @@
    ;; Sublist selection
    sloth-filter
    sloth-remove
+   sloth-remove-first
    sloth-take))
 
 (load (f-join sloth-test-dash-dir "dev" "examples-to-tests.el"))

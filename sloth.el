@@ -202,6 +202,15 @@ This cannot return control if LAZY-LIST is an infinite list."
   "A lazy version of `-remove'."
   (sloth-filter (lambda (x) (not (funcall pred x))) list))
 
+(defun sloth-remove-first (pred list)
+  "A lazy version of `-remove-first'."
+  (when list
+    (let ((first (sloth-car list))
+          (rest (sloth-cdr list)))
+      (if (funcall pred first)
+          rest
+        (sloth-cons first (sloth-remove-first pred rest))))))
+
 (defun sloth-take (n list)
   "A lazy version of `-take'."
   (cl-loop for i from 0 below n
