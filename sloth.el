@@ -211,6 +211,10 @@ This cannot return control if LAZY-LIST is an infinite list."
           rest
         (sloth-cons first (sloth-remove-first pred rest))))))
 
+(defun sloth-remove-item (item list)
+  "A lazy version of `-remove-item'."
+  (sloth-remove (lambda (x) (equal x item)) list))
+
 (defun sloth-take (n list)
   "A lazy version of `-take'."
   (cl-loop for i from 0 below n

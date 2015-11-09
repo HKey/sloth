@@ -63,6 +63,7 @@
    sloth-filter
    sloth-remove
    sloth-remove-first
+   sloth-remove-item
    sloth-take))
 
 (load (f-join sloth-test-dash-dir "dev" "examples-to-tests.el"))
