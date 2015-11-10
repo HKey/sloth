@@ -126,6 +126,13 @@ LIST can be a normal list or a lazy list."
     (cl-dotimes (_ n result)
       (cl-callf sloth-cdr result))))
 
+(defun sloth-take* (n list)
+  "Return a normal list of N items from the beginning of LIST.
+LIST can be a normal list or a lazy list."
+  (cl-loop for i from 0 below n
+           for e in list by #'sloth-cdr
+           collect e))
+
 
 
 ;;;; Dash compatible functions
@@ -225,12 +232,6 @@ LIST can be a normal list or a lazy list."
 (defun sloth-non-nil (list)
   "A lazy version of `-non-nil'."
   (sloth-remove #'null list))
-
-(defun sloth-take (n list)
-  "A lazy version of `-take'."
-  (cl-loop for i from 0 below n
-           for e in list by #'sloth-cdr
-           collect e))
 
 
 (provide 'sloth)

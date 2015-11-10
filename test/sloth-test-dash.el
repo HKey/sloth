@@ -64,8 +64,7 @@
    sloth-remove
    sloth-remove-first
    sloth-remove-item
-   sloth-non-nil
-   sloth-take))
+   sloth-non-nil))
 
 (load (f-join sloth-test-dash-dir "dev" "examples-to-tests.el"))
 (load (f-join sloth-test-dash-dir "dev" "examples.el"))
