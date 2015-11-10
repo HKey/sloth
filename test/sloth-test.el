@@ -116,5 +116,12 @@
                                             (sloth-list 4 5 6)))
                  '(1 2 3 4 5 6))))
 
+(ert-deftest sloth-nthcdr ()
+  (should (equal (sloth-doall (sloth-nthcdr 0 (sloth-list 1 2 3 4)))
+                 '(1 2 3 4)))
+  (should (equal (sloth-doall (sloth-nthcdr 2 (sloth-list 1 2 3 4)))
+                 '(3 4)))
+  (should (null (sloth-doall (sloth-nthcdr 10 (sloth-list 1 2 3 4))))))
+
 (provide 'sloth-test)
 ;;; sloth-test.el ends here

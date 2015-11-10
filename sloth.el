@@ -119,6 +119,13 @@ This cannot return control if LAZY-LIST is an infinite list."
         (sloth-cons (sloth-car first)
                     (apply #'sloth-append (cons (sloth-cdr first) rest)))))))
 
+(defun sloth-nthcdr (n list)
+  "Take `sloth-cdr' N times on LIST and return the result.
+LIST can be a normal list or a lazy list."
+  (let ((result list))
+    (cl-dotimes (_ n result)
+      (cl-callf sloth-cdr result))))
+
 
 
 ;;;; Dash compatible functions
